@@ -1,4 +1,4 @@
-# Movie App Project
+# Movie App
 
 ## Project Description
 
