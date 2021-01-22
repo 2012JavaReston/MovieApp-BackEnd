@@ -14,6 +14,7 @@ public interface UserRepo {
 	
 	//Read
 	public List<User> selectAllUsers();
+	public User selectByUsername(String username);
 	
 	//Update
 	boolean updateUser(User user);
