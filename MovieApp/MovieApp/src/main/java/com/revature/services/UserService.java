@@ -36,7 +36,7 @@ public class UserService {
 	
 	public boolean login(String username, String password) {
 		boolean login = false;
-		User fetched = userRepo.selectByUsername(username);
+		User fetched = userRepo.getUserByUsername(username);
 		if(fetched.getPassword().equals(password)) {
 			//LOG THAT LOGIN WAS SUCCESS
 			login = true;
