@@ -31,8 +31,8 @@ public class UserRepoImp implements UserRepo {
 	}
 
 	@Override
-	public List<User> getUserByUsername(String username) {
-		return sessFact.getCurrentSession().createQuery("from User where username = '" + username + "'", User.class).list();
+	public User getUserByUsername(String username) {
+		return sessFact.getCurrentSession().createQuery("from User where username = '" + username + "'", User.class).getSingleResult();
 	}
 
 	@Override
