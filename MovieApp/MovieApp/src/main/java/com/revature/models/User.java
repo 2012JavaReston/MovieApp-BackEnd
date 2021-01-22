@@ -1,10 +1,15 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +21,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@Column(name = "username",unique = true, nullable = false)
+	@Column(name = "username", unique = true, nullable = false)
 	private String username;
 	
 	@Column(name = "password", nullable = false)
@@ -27,7 +32,11 @@ public class User {
 	
 	@Column(name = "last_name", nullable = false )
 	private String lastName;
-
+	
+	/*@OneToMany(mappedBy = "movieComment", fetch = FetchType.EAGER)
+	private List<Comment> mComment = new ArrayList<>();*/
+	
+	
 	public User() {
 		super();
 	}
@@ -85,7 +94,6 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + "]";
-	}
-	
+	}	
 	
 }

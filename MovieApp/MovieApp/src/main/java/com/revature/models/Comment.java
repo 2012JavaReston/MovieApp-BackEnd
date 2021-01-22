@@ -1,10 +1,15 @@
 package com.revature.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +29,10 @@ public class Comment {
 	
 	@Column(name = "user_id")
 	private int userID;
+	
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_foreign_key")
+	private User user;
 
 	public Comment() {
 		super();
@@ -71,10 +80,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", comment=" + comments + ", movieID=" + movieID + ", userID=" + userID + "]";
+		return "Comment [id=" + id + ", comments=" + comments + ", movieID=" + movieID + ", userID=" + userID + "]";
 	}
-	
-	
-	
 
 }

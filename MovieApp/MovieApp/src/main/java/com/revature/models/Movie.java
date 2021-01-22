@@ -32,7 +32,7 @@ public class Movie {
 	@Column(name = "user_id")
 	private int userID;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_foreign_key")
 	private User user;
 

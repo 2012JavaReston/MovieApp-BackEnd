@@ -34,12 +34,12 @@ public class MovieRepoImp implements MovieRepo {
 
 	@Override
 	public List<Movie> getMovieByMovieId(int movieId) {
-		return sessFact.getCurrentSession().createQuery("from Movie where movieID = :movieId", Movie.class).setInteger("movieId", movieId).list();
+		return sessFact.getCurrentSession().createQuery("from Movie where movieID = " + movieId, Movie.class).list();
 	}
 
 	@Override
 	public List<Movie> getMovieByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Movie where userID = :userId", Movie.class).setInteger("userId", userId).list();
+		return sessFact.getCurrentSession().createQuery("from Movie where userID = " + userId, Movie.class).list();
 	}
 
 	@Override
