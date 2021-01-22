@@ -28,6 +28,11 @@ public class CommentRepoImp implements CommentRepo {
 	public List<Comment> selectAllComments() {
 		return sessFact.getCurrentSession().createQuery("from Comment", Comment.class).list();
 	}
+	
+	@Override
+	public List<Comment> getCommentByUserId(int userId) {
+		return sessFact.getCurrentSession().createQuery("from Comment where userID = :userId", Comment.class).setInteger("userId", userId).list();
+	}
 
 	@Override
 	public boolean updateComment(Comment comment) {

@@ -1,11 +1,11 @@
 package com.revature.repositories;
 
 import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.models.Comment;
 import com.revature.models.User;
 
 @Repository("UserRepoImp")
@@ -29,10 +29,10 @@ public class UserRepoImp implements UserRepo {
 	public List<User> selectAllUsers() {
 		return sessFact.getCurrentSession().createQuery("from User", User.class).list();
 	}
-	
+
 	@Override
-	public User selectByUsername(String username) {
-		return sessFact.getCurrentSession().get(User.class, username);
+	public List<User> getUserByUsername(String username) {
+		return sessFact.getCurrentSession().createQuery("from User where username = '" + username + "'", User.class).list();
 	}
 
 	@Override

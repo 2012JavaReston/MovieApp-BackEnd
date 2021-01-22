@@ -14,6 +14,9 @@ public interface CommentRepo {
 	//Read
 	public List<Comment> selectAllComments();
 	
+	//Read
+	public List<Comment> getCommentByUserId(int userId);
+	
 	//Update
 	boolean updateComment(Comment comment);
 	
