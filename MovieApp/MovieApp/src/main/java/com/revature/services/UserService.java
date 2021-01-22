@@ -1,50 +1,56 @@
 package com.revature.services;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
 import com.revature.repositories.UserRepo;
-import com.revature.repositories.UserRepoImp;
 
-//@Component("UserService")
+@Service("UserService")
 public class UserService {
 	
-	private UserRepo userRepo;
-	private static ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-	
 	@Autowired
-	public UserService() {
-		super();
-		this.userRepo = appContext.getBean("UserRepoImp", UserRepoImp.class);
-	}
+	private UserRepo userRepo;
 	
-	public UserService(UserRepo userRepo) {
-		super();
-		this.userRepo = userRepo;
-	}
-
-	public UserRepo getUserRepo() {
-		return userRepo;
-	}
-
-	public void setUserRepo(UserRepo userRepo) {
-		this.userRepo = userRepo;
-	}
-	
-	public boolean login(String username, String password) {
-		boolean login = false;
-		User fetched = userRepo.getUserByUsername(username);
-		if(fetched.getPassword().equals(password)) {
-			//LOG THAT LOGIN WAS SUCCESS
-			login = true;
-		} else {
-			//LOG THAT LOGIN WAS FAILURE
-			login = false;
+	public User login(String username, String password) {
+		User fetched;
+		try {
+			fetched = this.userRepo.getUserByUsername(username);
+			if(fetched.getPassword().equals(password)) {
+				//login succeeded, so pass back user without password
+				fetched.setPassword(null);
+			} else {
+				//login failed due to invalid password, so just pass back the username
+				fetched = new User(0, username, null, null, null); 
+			}
+		}catch(NoResultException e) {
+			//login failed due to invalid username
+			fetched = null;
 		}
-		return login;
+		return fetched;
+	}
+	
+	public User getUserByUsername(String username) {
+		User fetched;
+		try {
+			fetched = this.userRepo.getUserByUsername(username);
+			fetched.setPassword(null);
+		}catch(NoResultException e) {
+			fetched = null;
+		}
+		return fetched;
+	}
+	
+	public boolean registerUser(User u) {
+		boolean result;
+		if(u.getUsername() != null && u.getPassword() != null && u.getFirstName() != null && u.getLastName() != null){
+			result = userRepo.insertUser(u);
+		} else {
+			result = false;
+		}
+		return result;
 	}
 
 }
