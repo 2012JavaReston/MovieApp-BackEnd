@@ -49,9 +49,19 @@ public class MovieRepoImp implements MovieRepo {
 	}
 
 	@Override
-	public boolean deleteComment(Movie movie) {
+	public boolean deleteMovie(Movie movie) {
 		sessFact.getCurrentSession().delete(movie);
 		return true;
+	}
+
+	@Override
+	public List<Movie> getLikedByUserId(int userId) {
+		return sessFact.getCurrentSession().createQuery("from Movie where userID = " + userId + "and movieLike = true", Movie.class).list();
+	}
+
+	@Override
+	public List<Movie> getWatchListByUserId(int userId) {
+		return sessFact.getCurrentSession().createQuery("from Movie where userID = " + userId + "and movieWatchList = true", Movie.class).list();
 	}
 
 }

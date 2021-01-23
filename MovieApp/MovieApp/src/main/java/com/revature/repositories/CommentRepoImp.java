@@ -1,10 +1,8 @@
 package com.revature.repositories;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
