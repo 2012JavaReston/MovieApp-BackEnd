@@ -12,13 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "movie_table")
-public class Movie {
+@Table(name = "lists_table")
+public class Lists {
 	
 	@Id
-	@Column(name = "feature_id")
+	@Column(name = "list_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int featureId;
+	private int listID;
 	
 	@Column(name = "movie_id", nullable = false)
 	private int movieID;
@@ -36,13 +36,13 @@ public class Movie {
 	@JoinColumn(name = "user_foreign_key")
 	private User user;
 
-	public Movie() {
+	public Lists() {
 		super();
 	}
 
-	public Movie(int featureId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
+	public Lists(int featureId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
 		super();
-		this.featureId = featureId;
+		this.listID = featureId;
 		this.movieID = movieID;
 		this.movieLike = movieLike;
 		this.movieWatchList = movieWatchList;
@@ -50,11 +50,11 @@ public class Movie {
 	}
 
 	public int getFeatureId() {
-		return featureId;
+		return listID;
 	}
 
 	public void setFeatureId(int featureId) {
-		this.featureId = featureId;
+		this.listID = featureId;
 	}
 
 	public int getMovieID() {
@@ -91,7 +91,7 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [featureId=" + featureId + ", movieID=" + movieID + ", movieLike=" + movieLike
+		return "Movie [featureId=" + listID + ", movieID=" + movieID + ", movieLike=" + movieLike
 				+ ", movieWatchList=" + movieWatchList + ", userID=" + userID + "]";
 	}
 	

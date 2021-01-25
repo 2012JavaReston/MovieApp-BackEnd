@@ -22,7 +22,7 @@ public class Comment {
 	private int id;
 	
 	@Column(name = "comments")
-	private String comments;
+	private String comment;
 	
 	@Column(name = "movie_id" )
 	private int movieID;
@@ -41,7 +41,7 @@ public class Comment {
 	public Comment(int id, String comment, int movieID, int userID) {
 		super();
 		this.id = id;
-		this.comments = comment;
+		this.comment = comment;
 		this.movieID = movieID;
 		this.userID = userID;
 	}
@@ -55,11 +55,11 @@ public class Comment {
 	}
 
 	public String getComment() {
-		return comments;
+		return comment;
 	}
 
 	public void setComment(String comment) {
-		this.comments = comment;
+		this.comment = comment;
 	}
 
 	public int getMovieID() {
@@ -80,7 +80,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", comments=" + comments + ", movieID=" + movieID + ", userID=" + userID + "]";
+		return "Comment [id=" + id + ", comments=" + comment + ", movieID=" + movieID + ", userID=" + userID + "]";
 	}
 
 }

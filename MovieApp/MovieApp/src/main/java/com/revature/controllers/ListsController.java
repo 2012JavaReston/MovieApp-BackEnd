@@ -14,54 +14,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.revature.models.Movie;
-import com.revature.services.MovieService;
+import com.revature.models.Lists;
+import com.revature.services.ListsService;
+
 
 @Controller
-@RequestMapping(value = "/movie")
+@RequestMapping(value = "/lists")
 @CrossOrigin(origins = "*")
-public class MovieController {
+public class ListsController {
 	
 	@Autowired
-	private MovieService movieService;
+	private ListsService listsService;
 	
 	//Works in postman using get and params
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/movieID")
-	public @ResponseBody List<Movie> getMovieByMovieID(@RequestParam("movieID") int movieID) {
-		return this.movieService.getMovieByMovieID(movieID);
+	public @ResponseBody List<Lists> getListsByMovieID(@RequestParam("movieID") int movieID) {
+		return this.listsService.getListsByMovieID(movieID);
 	}
 	
 	//Works in postman using get and params
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/userID")
-	public @ResponseBody List<Movie> getMovieByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getMovieByUserID(userID);
+	public @ResponseBody List<Lists> getListsByUserID(@RequestParam("userID") int userID) {
+		return this.listsService.getListsByUserID(userID);
 	}
 	
 	//Works in postman using post and JSON
 	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping(value = "/insert")
-	public void insertMovie(@RequestBody Movie movie) {
-		this.movieService.insertMovie(movie);
+	public void insertMovie(@RequestBody Lists list) {
+		this.listsService.insertList(list);
 	}
 	
 	//Works in postman using get and params
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/user/likedlist")
-	public @ResponseBody List<Movie> getLikedByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getLikedByUserID(userID);
+	public @ResponseBody List<Lists> getLikedByUserID(@RequestParam("userID") int userID) {
+		return this.listsService.getLikedByUserID(userID);
 	}
 	//Works in postman using get and params
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/user/watchlist")
-	public @ResponseBody List<Movie> getWatchListByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getWatchListByUserID(userID);
+	public @ResponseBody List<Lists> getWatchListByUserID(@RequestParam("userID") int userID) {
+		return this.listsService.getWatchListByUserID(userID);
 	}
 	
 }
