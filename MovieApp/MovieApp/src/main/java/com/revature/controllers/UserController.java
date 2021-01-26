@@ -1,5 +1,7 @@
 package com.revature.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -40,13 +42,31 @@ public class UserController {
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping
-	public @ResponseBody User getUser(@RequestParam("username") String username) {
-		return this.userService.getUserByUsername(username);
+	public @ResponseBody User getUser(HttpServletRequest req, @RequestParam("username") String username) {
+		User user = null;
+		if(req.getSession(false) != null) {
+			user = this.userService.getUserByUsername(username);
+		}
+		return user;
+	}
+	
+	@ResponseStatus(value = HttpStatus.OK)
+	@GetMapping(value = "/list")
+	public @ResponseBody List<User> getAllUsers(){
+		return this.userService.getAllUsers();
 	}
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/register")
 	public void register(@RequestBody User requested) {
 		this.userService.registerUser(requested);
+	}
+	
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(value = "/logout")
+	public void logOut(HttpServletRequest req) {
+		if(req.getSession(false) != null) {
+			req.getSession(false).invalidate();
+		}
 	}
 }
