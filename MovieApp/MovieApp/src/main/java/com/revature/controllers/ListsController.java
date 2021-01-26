@@ -65,4 +65,17 @@ public class ListsController {
 		return this.listsService.getWatchListByUserID(userID);
 	}
 	
+	
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(value = "/like")
+	public void insertLike(@RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
+		this.listsService.insertLike(userID, movieID);
+	}
+	
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(value = "/watch")
+	public void insertWatch(@RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
+		this.listsService.insertWatchList(userID, movieID);
+	}
+	
 }

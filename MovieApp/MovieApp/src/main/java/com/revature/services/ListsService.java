@@ -61,5 +61,27 @@ public class ListsService {
 		}
 		return fetched;
 	}
+	
+	public boolean insertLike(int userID, int movieID) {
+		boolean result;
+		if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
+			Lists list = new Lists(0, movieID, true, false, userID);
+			result = listsRepo.insertList(list);
+		}else {
+			result = listsRepo.updateLike(userID, movieID);
+		}
+		return result;
+	}
+	
+	public boolean insertWatchList(int userID, int movieID) {
+		boolean result;
+		if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
+			Lists list = new Lists(0, movieID, false, true, userID);
+			result = listsRepo.insertList(list);
+		}else {
+			result = listsRepo.updateWatchList(userID, movieID);
+		}
+		return result;
+	}
 
 }

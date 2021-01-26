@@ -15,19 +15,28 @@ public interface ListsRepo {
 	public List<Lists> selectAllLists();
 	
 	//Read
-	public List<Lists> getListsByMovieId(int movieId);
+	public List<Lists> getListsByMovieId(int movieID);
 	
 	//Read
-	public List<Lists> getListsByUserId(int userId);
+	public List<Lists> getListsByUserId(int userID);
 	
 	//Read
-	public List<Lists> getLikedByUserId(int userId);
+	public List<Lists> getLikedByUserId(int userID);
 	
 	//Read
-	public List<Lists> getWatchListByUserId(int userId);
+	public List<Lists> getListByUserAndMovie(int userID, int movieID);
+	
+	//Read
+	public List<Lists> getWatchListByUserId(int userID);
 
 	//Update
 	boolean updateList(Lists movie);
+	
+	//Update
+	boolean updateLike(int userID,int movieID);
+	
+	//Update
+	boolean updateWatchList(int userID,int movieID);
 	
 	//Delete
 	boolean deleteList(Lists movie);

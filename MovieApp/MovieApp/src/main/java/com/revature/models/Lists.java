@@ -40,21 +40,21 @@ public class Lists {
 		super();
 	}
 
-	public Lists(int featureId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
+	public Lists(int listId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
 		super();
-		this.listID = featureId;
+		this.listID = listId;
 		this.movieID = movieID;
 		this.movieLike = movieLike;
 		this.movieWatchList = movieWatchList;
 		this.userID = userID;
 	}
 
-	public int getFeatureId() {
+	public int getListId() {
 		return listID;
 	}
 
-	public void setFeatureId(int featureId) {
-		this.listID = featureId;
+	public void setFeatureId(int listId) {
+		this.listID = listId;
 	}
 
 	public int getMovieID() {
@@ -91,7 +91,7 @@ public class Lists {
 
 	@Override
 	public String toString() {
-		return "Movie [featureId=" + listID + ", movieID=" + movieID + ", movieLike=" + movieLike
+		return "Lists [listId=" + listID + ", movieID=" + movieID + ", movieLike=" + movieLike
 				+ ", movieWatchList=" + movieWatchList + ", userID=" + userID + "]";
 	}
 	
