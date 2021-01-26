@@ -42,4 +42,17 @@ public class CommentService {
 		return result;
 	}
 
+	public boolean updateComment(int id, String comment) {
+		boolean result;
+		result = commentRepo.updateComment(id, comment);
+		return result;
+	}
+
+	public boolean deleteComment(int id) {
+		boolean result;
+		result = commentRepo.deleteComment(id);
+		return result;
+	}
+
 }
+

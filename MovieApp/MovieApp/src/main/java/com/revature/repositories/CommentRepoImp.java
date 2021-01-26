@@ -32,24 +32,25 @@ public class CommentRepoImp implements CommentRepo {
 	
 	@Override
 	public List<Comment> getCommentByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Comment where userID = " + userId, Comment.class).list();
+		return sessFact.getCurrentSession().createQuery("from Comment where userID = " + userId + " order by id asc", Comment.class).list();
 	}
 	
 	@Override
 	public List<Comment> getCommentByMovieId(int movieId) {
-		return sessFact.getCurrentSession().createQuery("from Comment where movieID = " + movieId, Comment.class).list();
+		return sessFact.getCurrentSession().createQuery("from Comment where movieID = " + movieId + " order by id asc", Comment.class).list();
 	}
 
 	@Override
-	public boolean updateComment(Comment comment) {
-		sessFact.getCurrentSession().update(comment);
+	public boolean updateComment(int id, String comment) {
+		sessFact.getCurrentSession().createQuery("update Comment set comment = '" + comment + "' where id = " + id).executeUpdate();
 		return true;
 	}
 
 	@Override
-	public boolean deleteComment(Comment comment) {
-		sessFact.getCurrentSession().delete(comment);
+	public boolean deleteComment(int id) {
+		sessFact.getCurrentSession().createQuery("delete Comment where id = " + id).executeUpdate();
 		return true;
 	}
 
 }
+
