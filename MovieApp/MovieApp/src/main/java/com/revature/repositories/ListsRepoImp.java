@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Lists;
 
-@Repository("MovieRepoImp")
+@Repository("ListsRepoImp")
 @Transactional
 public class ListsRepoImp implements ListsRepo {
 

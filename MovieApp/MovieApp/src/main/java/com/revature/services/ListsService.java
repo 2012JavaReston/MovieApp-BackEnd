@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.revature.models.Lists;
 import com.revature.repositories.ListsRepo;
 
-@Service("MovieService")
+@Service("ListService")
 public class ListsService {
 	
 	@Autowired
