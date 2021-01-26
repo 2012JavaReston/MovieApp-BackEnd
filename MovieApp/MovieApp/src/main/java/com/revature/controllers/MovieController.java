@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -27,20 +29,20 @@ public class MovieController {
 	
 	@ResponseStatus(value = HttpStatus.FOUND)
 	@GetMapping(value = "/ID")
-	public @ResponseBody List<Movie> getMovieByMovieID(@RequestParam("movieID") int movieID) {
+	public @ResponseBody List<Movie> getMovieByMovieID(HttpServletRequest req, @RequestParam("movieID") int movieID) {
 		return this.movieService.getMovieByMovieID(movieID);
 	}
 
 	@ResponseStatus(value = HttpStatus.FOUND)
 	@GetMapping(value = "/all")
-	public @ResponseBody List<Movie> getAllMovies() {
+	public @ResponseBody List<Movie> getAllMovies(HttpServletRequest req) {
 		return this.movieService.getAllMovies();
 		
 	}
 	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping(value = "/insert" )
-	public void insertMovie(@RequestBody Movie movie) {
+	public void insertMovie(HttpServletRequest req, @RequestBody Movie movie) {
 		this.movieService.insertMovie(movie);
 	}
 	

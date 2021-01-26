@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -31,7 +33,7 @@ public class CommentController {
 	
 	@ResponseStatus(value = HttpStatus.FOUND)
 	@GetMapping(value = "/userID")
-	public @ResponseBody List<Comment> getCommentByUserID(@RequestParam("userID") int userID) {
+	public @ResponseBody List<Comment> getCommentByUserID(HttpServletRequest req, @RequestParam("userID") int userID) {
 		return this.commentService.getCommentByUserID(userID);
 		
 	}
@@ -40,7 +42,7 @@ public class CommentController {
 	
 	@ResponseStatus(value = HttpStatus.FOUND)
 	@GetMapping(value = "/movieID")
-	public @ResponseBody List<Comment> getCommentByMovieID(@RequestParam("movieID") int movieID) {
+	public @ResponseBody List<Comment> getCommentByMovieID(HttpServletRequest req, @RequestParam("movieID") int movieID) {
 		return this.commentService.getCommentByMovieID(movieID);
 		
 	}
@@ -49,20 +51,20 @@ public class CommentController {
 	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping(value = "/insert")
-	public void insertComment(@RequestBody Comment comment) {
+	public void insertComment(HttpServletRequest req, @RequestBody Comment comment) {
 		this.commentService.insertComment(comment);
 	}
 	
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PutMapping(value = "/update")
-	public void updateComment(@RequestParam("id") int id, @RequestParam("comment") String comment) {
+	public void updateComment(HttpServletRequest req, @RequestParam("id") int id, @RequestParam("comment") String comment) {
 		this.commentService.updateComment(id, comment);
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
 	@DeleteMapping(value = "/delete")
-	public void deleteComment(@RequestParam("id") int id) {
+	public void deleteComment(HttpServletRequest req, @RequestParam("id") int id) {
 		this.commentService.deleteComment(id);
 	}
 
