@@ -16,10 +16,16 @@ public class MovieService {
 	@Autowired
 	private MovieRepo movieRepo;
 	
-	public List<Movie> getMovieByUserID(int userID) {
+	public boolean insertMovie(Movie movie) {
+		boolean result;
+		result = movieRepo.insertMovie(movie);
+		return result;
+	}
+	
+	public List<Movie> getAllMovies() {
 		List<Movie> fetched;
 		try {
-			fetched = this.movieRepo.getMovieByUserId(userID);
+			fetched = this.movieRepo.selectAllMovies();
 		} catch(NoResultException e) {
 			fetched = null;
 		}
@@ -30,32 +36,6 @@ public class MovieService {
 		List<Movie> fetched;
 		try {
 			fetched = this.movieRepo.getMovieByMovieId(movieID);
-		} catch(NoResultException e) {
-			fetched = null;
-		}
-		return fetched;
-	}
-	
-	public boolean insertMovie(Movie movie) {
-		boolean result;
-		result = movieRepo.insertMovie(movie);
-		return result;
-	}
-	
-	public List<Movie> getLikedByUserID(int userID) {
-		List<Movie> fetched;
-		try {
-			fetched = this.movieRepo.getLikedByUserId(userID);
-		} catch(NoResultException e) {
-			fetched = null;
-		}
-		return fetched;
-	}
-	
-	public List<Movie> getWatchListByUserID(int userID) {
-		List<Movie> fetched;
-		try {
-			fetched = this.movieRepo.getWatchListByUserId(userID);
 		} catch(NoResultException e) {
 			fetched = null;
 		}

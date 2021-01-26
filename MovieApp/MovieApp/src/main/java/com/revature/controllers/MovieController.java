@@ -25,43 +25,23 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 	
-	//Works in postman using get and params
-	
-	@ResponseStatus(value = HttpStatus.OK)
-	@GetMapping(value = "/movieID")
+	@ResponseStatus(value = HttpStatus.FOUND)
+	@GetMapping(value = "/ID")
 	public @ResponseBody List<Movie> getMovieByMovieID(@RequestParam("movieID") int movieID) {
 		return this.movieService.getMovieByMovieID(movieID);
 	}
-	
-	//Works in postman using get and params
-	
-	@ResponseStatus(value = HttpStatus.OK)
-	@GetMapping(value = "/userID")
-	public @ResponseBody List<Movie> getMovieByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getMovieByUserID(userID);
+
+	@ResponseStatus(value = HttpStatus.FOUND)
+	@GetMapping(value = "/all")
+	public @ResponseBody List<Movie> getAllMovies() {
+		return this.movieService.getAllMovies();
+		
 	}
-	
-	//Works in postman using post and JSON
 	
 	@ResponseStatus(value = HttpStatus.CREATED)
-	@PostMapping(value = "/insert")
+	@PostMapping(value = "/insert" )
 	public void insertMovie(@RequestBody Movie movie) {
 		this.movieService.insertMovie(movie);
-	}
-	
-	//Works in postman using get and params
-	
-	@ResponseStatus(value = HttpStatus.OK)
-	@GetMapping(value = "/user/likedlist")
-	public @ResponseBody List<Movie> getLikedByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getLikedByUserID(userID);
-	}
-	//Works in postman using get and params
-	
-	@ResponseStatus(value = HttpStatus.OK)
-	@GetMapping(value = "/user/watchlist")
-	public @ResponseBody List<Movie> getWatchListByUserID(@RequestParam("userID") int userID) {
-		return this.movieService.getWatchListByUserID(userID);
 	}
 	
 }

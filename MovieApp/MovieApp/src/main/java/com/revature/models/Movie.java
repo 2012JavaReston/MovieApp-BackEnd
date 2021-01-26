@@ -1,14 +1,8 @@
 package com.revature.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,45 +10,46 @@ import javax.persistence.Table;
 public class Movie {
 	
 	@Id
-	@Column(name = "feature_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int featureId;
-	
-	@Column(name = "movie_id", nullable = false)
+	@Column(name = "movie_id")
 	private int movieID;
 	
-	@Column(name = "movie_like")
-	private boolean movieLike;
+	@Column(name = "image_url")
+	private String imageURL;
 	
-	@Column(name = "movie_watch_list")
-	private boolean movieWatchList;
+	@Column(name = "title")
+	private String title;
 	
-	@Column(name = "user_id")
-	private int userID;
+	@Column(name = "description")
+	private String description;
 	
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_foreign_key")
-	private User user;
+	@Column(name = "release_date")
+	private String releaseDate;
+	
+	@Column(name = "director")
+	private String director;
+	
+	@Column(name = "movie_rating")
+	private double movieRating;
+	
+	@Column(name = "genre")
+	private String genre;
 
 	public Movie() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Movie(int featureId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
+	public Movie(int movieID, String imageURL, String title, String description, String releaseDate, String director,
+			double movieRating, String genre) {
 		super();
-		this.featureId = featureId;
 		this.movieID = movieID;
-		this.movieLike = movieLike;
-		this.movieWatchList = movieWatchList;
-		this.userID = userID;
-	}
-
-	public int getFeatureId() {
-		return featureId;
-	}
-
-	public void setFeatureId(int featureId) {
-		this.featureId = featureId;
+		this.imageURL = imageURL;
+		this.title = title;
+		this.description = description;
+		this.releaseDate = releaseDate;
+		this.director = director;
+		this.movieRating = movieRating;
+		this.genre = genre;
 	}
 
 	public int getMovieID() {
@@ -65,34 +60,69 @@ public class Movie {
 		this.movieID = movieID;
 	}
 
-	public boolean isMovieLike() {
-		return movieLike;
+	public String getImageURL() {
+		return imageURL;
 	}
 
-	public void setMovieLike(boolean movieLike) {
-		this.movieLike = movieLike;
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
-	public boolean isMovieWatchList() {
-		return movieWatchList;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setMovieWatchList(boolean movieWatchList) {
-		this.movieWatchList = movieWatchList;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public int getUserID() {
-		return userID;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public String getDirector() {
+		return director;
+	}
+
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
+	public double getMovieRating() {
+		return movieRating;
+	}
+
+	public void setMovieRating(double movieRating) {
+		this.movieRating = movieRating;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	@Override
 	public String toString() {
-		return "Movie [featureId=" + featureId + ", movieID=" + movieID + ", movieLike=" + movieLike
-				+ ", movieWatchList=" + movieWatchList + ", userID=" + userID + "]";
+		return "Movie [movieID=" + movieID + ", imageURL=" + imageURL + ", title=" + title + ", description="
+				+ description + ", releaseDate=" + releaseDate + ", director=" + director + ", movieRating="
+				+ movieRating + ", genre=" + genre + "]";
 	}
+
+	
 	
 }

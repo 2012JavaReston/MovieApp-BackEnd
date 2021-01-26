@@ -4,10 +4,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.revature.models.Comment;
-import com.revature.models.Movie;
+import com.revature.models.Lists;
 import com.revature.models.User;
 import com.revature.repositories.CommentRepoImp;
-import com.revature.repositories.MovieRepoImp;
+import com.revature.repositories.ListsRepoImp;
 import com.revature.repositories.UserRepoImp;
 
 public class Driver {
@@ -15,7 +15,7 @@ public class Driver {
 	private static ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 	private static UserRepoImp uRepoImp = appContext.getBean("UserRepoImp", UserRepoImp.class);
 	private static CommentRepoImp cRepoImp = appContext.getBean("CommentRepoImp", CommentRepoImp.class);
-	private static MovieRepoImp mRepoImp = appContext.getBean("MovieRepoImp", MovieRepoImp.class);
+	private static ListsRepoImp mRepoImp = appContext.getBean("ListsRepoImp", ListsRepoImp.class);
 	
 	public static void main(String[] args) {
 		
@@ -62,23 +62,23 @@ public class Driver {
 		
 		cRepoImp.deleteComment(comment1);*/
 				
-		Movie m1 = new Movie(0, 1, true, true, 1);
-		mRepoImp.insertMovie(m1);
+		Lists m1 = new Lists(0, 1, true, true, 1);
+		mRepoImp.insertList(m1);
 		
-		Movie m2 = new Movie(0, 2, false, true, 1);
-		mRepoImp.insertMovie(m2);
+		Lists m2 = new Lists(0, 2, false, true, 1);
+		mRepoImp.insertList(m2);
 		
-		Movie m3 = new Movie(0, 1, true, true, 2);
-		mRepoImp.insertMovie(m3);
+		Lists m3 = new Lists(0, 1, true, true, 2);
+		mRepoImp.insertList(m3);
 		
-		Movie m4= new Movie(0, 2, false, true, 2);
-		mRepoImp.insertMovie(m4);
+		Lists m4= new Lists(0, 2, false, true, 2);
+		mRepoImp.insertList(m4);
 		
-		System.out.println("\nMovie Table: " + mRepoImp.selectAllMovies());
+		System.out.println("\nMovie Table: " + mRepoImp.selectAllLists());
 		
-		System.out.println("Movie By movieID 2: " + mRepoImp.getMovieByMovieId(2));
+		System.out.println("Movie By movieID 2: " + mRepoImp.getListsByMovieId(2));
 		
-		System.out.println("Movie By userID 1: " + mRepoImp.getMovieByUserId(1));
+		System.out.println("Movie By userID 1: " + mRepoImp.getListsByUserId(1));
 			
 	}
 	
