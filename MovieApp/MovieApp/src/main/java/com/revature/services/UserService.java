@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,14 @@ public class UserService {
 			result = false;
 		}
 		return result;
+	}
+
+	public List<User> getAllUsers() {
+		List<User> users = userRepo.selectAllUsers();
+		for(User u : users) {
+			u.setPassword(null);
+		}
+		return users;
 	}
 
 }
