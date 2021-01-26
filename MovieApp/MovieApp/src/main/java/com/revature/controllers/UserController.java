@@ -52,7 +52,7 @@ public class UserController {
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/list")
-	public @ResponseBody List<User> getAllUsers(){
+	public @ResponseBody List<User> getAllUsers(HttpServletRequest req){
 		return this.userService.getAllUsers();
 	}
 	
