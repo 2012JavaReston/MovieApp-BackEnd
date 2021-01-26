@@ -21,9 +21,9 @@ public interface CommentRepo {
 	public List<Comment> getCommentByMovieId(int movieId);
 
 	//Update
-	boolean updateComment(Comment comment);
+	boolean updateComment(int id, String comment);
 	
 	//Delete
-	boolean deleteComment(Comment comment);
+	boolean deleteComment(int id);
 
 }
