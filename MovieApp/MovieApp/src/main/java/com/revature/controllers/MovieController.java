@@ -21,7 +21,7 @@ import com.revature.services.MovieService;
 
 @Controller
 @RequestMapping(value = "/movie")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowCredentials = "true")
 public class MovieController {
 	
 	@Autowired

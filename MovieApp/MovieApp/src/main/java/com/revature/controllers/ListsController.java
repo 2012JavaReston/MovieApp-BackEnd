@@ -22,7 +22,9 @@ import com.revature.services.ListsService;
 
 @Controller
 @RequestMapping(value = "/lists")
-@CrossOrigin(origins = "*", allowCredentials="true")
+
+@CrossOrigin(origins = "*", allowCredentials = "true")
+
 public class ListsController {
 	
 	@Autowired
