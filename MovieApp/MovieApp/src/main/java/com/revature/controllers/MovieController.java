@@ -21,19 +21,19 @@ import com.revature.services.MovieService;
 
 @Controller
 @RequestMapping(value = "/movie")
-@CrossOrigin(origins = "*", allowCredentials = "true")
+@CrossOrigin(origins = "http://cinematch-rev2.s3-website.us-east-2.amazonaws.com/", allowCredentials = "true")
 public class MovieController {
 	
 	@Autowired
 	private MovieService movieService;
 	
-	@ResponseStatus(value = HttpStatus.FOUND)
+	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/ID")
 	public @ResponseBody List<Movie> getMovieByMovieID(HttpServletRequest req, @RequestParam("movieID") int movieID) {
 		return this.movieService.getMovieByMovieID(movieID);
 	}
 
-	@ResponseStatus(value = HttpStatus.FOUND)
+	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/all")
 	public @ResponseBody List<Movie> getAllMovies(HttpServletRequest req) {
 		return this.movieService.getAllMovies();

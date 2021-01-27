@@ -5,6 +5,7 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
+
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -18,4 +19,8 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>/api/*</url-pattern>
   </servlet-mapping>
+  
+ 
+ 
 </web-app>
+
