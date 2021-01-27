@@ -73,6 +73,12 @@ public class ListsService {
 		return result;
 	}
 	
+	public boolean removeLike(int userID, int movieID) {
+		boolean result;
+		result = listsRepo.updateRemoveLike(userID, movieID);
+		return result;
+	}
+	
 	public boolean insertWatchList(int userID, int movieID) {
 		boolean result;
 		if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
@@ -83,5 +89,13 @@ public class ListsService {
 		}
 		return result;
 	}
+	
+	public boolean removeWatchList(int userID, int movieID) {
+		boolean result;
+		result = listsRepo.updateRemoveWatchList(userID, movieID);
+		return result;
+	}
+	
+	
 
 }

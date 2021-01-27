@@ -17,7 +17,7 @@ public class Lists {
 	
 	@Id
 	@Column(name = "list_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int listID;
 	
 	@Column(name = "movie_id", nullable = false)

@@ -8,37 +8,35 @@ public interface ListsRepo {
 
 	//CRUD Methods
 	
-	//Create
+	//Create Methods
 	boolean insertList(Lists list);
 	
-	//Read
+	//Read Methods
 	public List<Lists> selectAllLists();
 	
-	//Read
 	public List<Lists> getListsByMovieId(int movieID);
 	
-	//Read
 	public List<Lists> getListsByUserId(int userID);
 	
-	//Read
 	public List<Lists> getLikedByUserId(int userID);
 	
-	//Read
 	public List<Lists> getListByUserAndMovie(int userID, int movieID);
 	
-	//Read
 	public List<Lists> getWatchListByUserId(int userID);
 
-	//Update
+	//Update Methods
 	boolean updateList(Lists movie);
 	
-	//Update
 	boolean updateLike(int userID,int movieID);
 	
-	//Update
 	boolean updateWatchList(int userID,int movieID);
 	
-	//Delete
+	boolean updateRemoveLike(int userID,int movieID);
+	
+	boolean updateRemoveWatchList(int userID,int movieID);
+	
+	
+	//Delete Methods
 	boolean deleteList(Lists movie);
 
 }

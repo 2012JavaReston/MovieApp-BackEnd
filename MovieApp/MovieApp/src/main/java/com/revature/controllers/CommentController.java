@@ -31,7 +31,7 @@ public class CommentController {
 	
 	//Works in postman using get and params
 	
-	@ResponseStatus(value = HttpStatus.FOUND)
+	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/userID")
 	public @ResponseBody List<Comment> getCommentByUserID(HttpServletRequest req, @RequestParam("userID") int userID) {
 		return this.commentService.getCommentByUserID(userID);
@@ -40,7 +40,7 @@ public class CommentController {
 	
 	//Works in postman using get and params
 	
-	@ResponseStatus(value = HttpStatus.FOUND)
+	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/movieID")
 	public @ResponseBody List<Comment> getCommentByMovieID(HttpServletRequest req, @RequestParam("movieID") int movieID) {
 		return this.commentService.getCommentByMovieID(movieID);
