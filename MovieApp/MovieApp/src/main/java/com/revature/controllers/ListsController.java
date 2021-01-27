@@ -75,9 +75,21 @@ public class ListsController {
 	}
 	
 	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(value = "/removelike")
+	public void removeLike(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
+		this.listsService.removeLike(userID, movieID);
+	}
+	
+	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/watch")
 	public void insertWatch(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
 		this.listsService.insertWatchList(userID, movieID);
+	}
+	
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(value = "/removewatch")
+	public void removeWatch(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
+		this.listsService.removeWatchList(userID, movieID);
 	}
 	
 }

@@ -81,4 +81,16 @@ public class ListsRepoImp implements ListsRepo {
 		return true;
 	}
 
+	@Override
+	public boolean updateRemoveLike(int userID, int movieID) {
+		sessFact.getCurrentSession().createQuery("update Lists set movieLike = false where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		return true;
+	}
+
+	@Override
+	public boolean updateRemoveWatchList(int userID, int movieID) {
+		sessFact.getCurrentSession().createQuery("update Lists set movieWatchList = false where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		return true;
+	}
+
 }
