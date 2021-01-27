@@ -23,7 +23,7 @@ import com.revature.services.CommentService;
 
 @Controller
 @RequestMapping(value = "/comment")
-@CrossOrigin(origins = "*", allowCredentials = "true")
+@CrossOrigin(origins = "http://cinematch-rev2.s3-website.us-east-2.amazonaws.com/", allowCredentials = "true")
 public class CommentController {
 	
 	@Autowired
