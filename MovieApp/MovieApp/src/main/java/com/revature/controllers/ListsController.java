@@ -23,6 +23,7 @@ import com.revature.services.ListsService;
 @Controller
 @RequestMapping(value = "/lists")
 @CrossOrigin(origins = "http://cinematch.s3-website-us-east-1.amazonaws.com", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true") //dev
 public class ListsController {
 	
 	@Autowired
