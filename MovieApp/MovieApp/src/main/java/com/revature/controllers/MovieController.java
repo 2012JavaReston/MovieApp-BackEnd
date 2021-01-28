@@ -22,6 +22,7 @@ import com.revature.services.MovieService;
 @Controller
 @RequestMapping(value = "/movie")
 @CrossOrigin(origins = "http://cinematch.s3-website-us-east-1.amazonaws.com", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true") //dev
 public class MovieController {
 	
 	@Autowired
