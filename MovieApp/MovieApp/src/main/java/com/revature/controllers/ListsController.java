@@ -48,7 +48,7 @@ public class ListsController {
 	
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping(value = "/insert")
-	public void insertMovie(HttpServletRequest req, @RequestBody Lists list) {
+	public void insertLists(HttpServletRequest req, @RequestBody Lists list) {
 		this.listsService.insertList(list);
 	}
 	
