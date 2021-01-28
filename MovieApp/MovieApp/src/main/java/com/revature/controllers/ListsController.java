@@ -55,7 +55,6 @@ public class ListsController {
 	}
 	
 	//Works in postman using get and params
-	
 	@ResponseStatus(value = HttpStatus.OK)
 	@GetMapping(value = "/user/likedlist")
 	public @ResponseBody List<Lists> getLikedByUserID(HttpServletRequest req, @RequestParam("userID") int userID) {

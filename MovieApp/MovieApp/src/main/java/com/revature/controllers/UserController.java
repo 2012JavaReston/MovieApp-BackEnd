@@ -25,13 +25,14 @@ import com.revature.services.UserService;
 
 
 
-@CrossOrigin(origins = "http://cinematch-rev2.s3-website.us-east-2.amazonaws.com/", allowCredentials = "true")
+@CrossOrigin(origins = "*", allowCredentials = "true")
 
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
+	@CrossOrigin(origins = "*", allowCredentials = "true")
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/login")
 	public @ResponseBody User login(HttpServletRequest req, @RequestBody User requested) {
@@ -39,6 +40,7 @@ public class UserController {
 		if(user != null) {	//	a user exists for this username
 			if(user.getId() != 0) {	//has an ID, is signed in
 				HttpSession session = req.getSession();
+				
 			}
 		}
 		return user;
