@@ -68,39 +68,39 @@ public class CommentControllerTest {
 			.andExpect(content().contentType("application/json"));
 	}
 	
-	@Test
-	public void testInsert() throws Exception{
-		Comment comment = new Comment(0,"comment",1,1);
-		
-		 ObjectMapper obj = new ObjectMapper();
-		 obj.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-		 ObjectWriter ow = obj.writer().withDefaultPrettyPrinter();
-		 String requestJson = ow.writeValueAsString(comment);
-		 
-		when(commentService.insertComment(comment)).thenReturn(true);
-		
-		mockMvc.perform(post("/comment/insert",comment).contentType(MediaType.APPLICATION_JSON).content(requestJson))	
-			.andExpect(status().isCreated()).andReturn();
-	}
-	
-	@Test
-	public void testUpdateComment() throws Exception{
-		
-		when(commentService.updateComment(id,comm)).thenReturn(true);
-		
-		mockMvc.perform(put("/comment/update?id={id}&comment={comm}", id, comm).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk());
-	}
-	
-	@Test
-	public void testRemoveComment() throws Exception{
-		
-		when(commentService.deleteComment(id)).thenReturn(true);
-		
-		mockMvc.perform(delete("/comment/delete?id={id}", id).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk());
-	}
+//	@Test
+//	public void testInsert() throws Exception{
+//		Comment comment = new Comment(0,"comment",1,1);
+//		
+//		 ObjectMapper obj = new ObjectMapper();
+//		 obj.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+//		 ObjectWriter ow = obj.writer().withDefaultPrettyPrinter();
+//		 String requestJson = ow.writeValueAsString(comment);
+//		 
+//		when(commentService.insertComment(comment)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/comment/insert",comment).contentType(MediaType.APPLICATION_JSON).content(requestJson))	
+//			.andExpect(status().isCreated()).andReturn();
+//	}
+//	
+//	@Test
+//	public void testUpdateComment() throws Exception{
+//		
+//		when(commentService.updateComment(id,comm)).thenReturn(true);
+//		
+//		mockMvc.perform(put("/comment/update?id={id}&comment={comm}", id, comm).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk());
+//	}
+//	
+//	@Test
+//	public void testRemoveComment() throws Exception{
+//		
+//		when(commentService.deleteComment(id)).thenReturn(true);
+//		
+//		mockMvc.perform(delete("/comment/delete?id={id}", id).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk());
+//	}
 
 }
