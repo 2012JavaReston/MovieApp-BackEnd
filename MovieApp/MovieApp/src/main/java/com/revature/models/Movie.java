@@ -36,7 +36,6 @@ public class Movie {
 
 	public Movie() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Movie(int movieID, String imageURL, String title, String description, String releaseDate, String director,

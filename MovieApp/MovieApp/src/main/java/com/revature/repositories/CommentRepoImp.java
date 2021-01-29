@@ -43,7 +43,7 @@ public class CommentRepoImp implements CommentRepo {
 	
 	@Override
 	public List<Comment> getCommentByMovieId(int movieId) {
-		return sessFact.getCurrentSession().createQuery("from Comment where movieID = " + movieId + " order by id asc", Comment.class).list();
+		return sessFact.getCurrentSession().createQuery("from Comment where movieID = " + movieId + " order by id desc", Comment.class).list();
 	}
 
 	@Override
