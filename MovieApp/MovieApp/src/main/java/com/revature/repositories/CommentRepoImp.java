@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Comment;
+import com.revature.models.User;
 
 @Repository("CommentRepoImp")
 @Transactional
@@ -29,10 +30,15 @@ public class CommentRepoImp implements CommentRepo {
 	public List<Comment> selectAllComments() {
 		return sessFact.getCurrentSession().createQuery("from Comment", Comment.class).list();
 	}
+
+	@Override
+	public Comment getCommentById(int id) {
+		return sessFact.getCurrentSession().createQuery("from Comment where id = " + id, Comment.class).getSingleResult();
+	}
 	
 	@Override
 	public List<Comment> getCommentByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Comment where userID = " + userId + " order by id asc", Comment.class).list();
+		return sessFact.getCurrentSession().createQuery("from Comment where user = " + userId + " order by id asc", Comment.class).list();
 	}
 	
 	@Override
@@ -51,6 +57,5 @@ public class CommentRepoImp implements CommentRepo {
 		sessFact.getCurrentSession().createQuery("delete Comment where id = " + id).executeUpdate();
 		return true;
 	}
-
 }
 

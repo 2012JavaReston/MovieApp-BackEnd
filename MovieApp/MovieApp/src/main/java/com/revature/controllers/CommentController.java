@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.revature.models.Comment;
+import com.revature.models.User;
 import com.revature.services.CommentService;
 
 @Controller
@@ -53,6 +54,9 @@ public class CommentController {
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping(value = "/insert")
 	public void insertComment(HttpServletRequest req, @RequestBody Comment comment) {
+		User user = new User();
+		user.setId(Integer.parseInt(req.getSession(false).getAttribute("userID").toString()));
+		comment.setUser(user);
 		this.commentService.insertComment(comment);
 	}
 	
@@ -60,13 +64,13 @@ public class CommentController {
 	@ResponseStatus(value = HttpStatus.OK)
 	@PutMapping(value = "/update")
 	public void updateComment(HttpServletRequest req, @RequestParam("id") int id, @RequestParam("comment") String comment) {
-		this.commentService.updateComment(id, comment);
+		this.commentService.updateComment(id, comment, Integer.parseInt(req.getSession(false).getAttribute("userID").toString()));
 	}
 
 	@ResponseStatus(value = HttpStatus.OK)
 	@DeleteMapping(value = "/delete")
 	public void deleteComment(HttpServletRequest req, @RequestParam("id") int id) {
-		this.commentService.deleteComment(id);
+		this.commentService.deleteComment(id, Integer.parseInt(req.getSession(false).getAttribute("userID").toString()));
 	}
 
 }

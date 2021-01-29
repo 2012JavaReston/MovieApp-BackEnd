@@ -38,7 +38,7 @@ public class ListsRepoImp implements ListsRepo {
 
 	@Override
 	public List<Lists> getListsByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Lists where userID = " + userId, Lists.class).list();
+		return sessFact.getCurrentSession().createQuery("from Lists where user = " + userId, Lists.class).list();
 	}
 
 	@Override
@@ -55,41 +55,41 @@ public class ListsRepoImp implements ListsRepo {
 
 	@Override
 	public List<Lists> getLikedByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Lists where userID = " + userId + "and movieLike = true", Lists.class).list();
+		return sessFact.getCurrentSession().createQuery("from Lists where user = " + userId + "and movieLike = true", Lists.class).list();
 	}
 
 	@Override
 	public List<Lists> getWatchListByUserId(int userId) {
-		return sessFact.getCurrentSession().createQuery("from Lists where userID = " + userId + "and movieWatchList = true", Lists.class).list();
+		return sessFact.getCurrentSession().createQuery("from Lists where user = " + userId + "and movieWatchList = true", Lists.class).list();
 	}
 
 	@Override
 	public List<Lists> getListByUserAndMovie(int userID, int movieID) {
-		return sessFact.getCurrentSession().createQuery("from Lists where userID = " + userID + "and movieID = "+ movieID, Lists.class).list();
+		return sessFact.getCurrentSession().createQuery("from Lists where user = " + userID + "and movieID = "+ movieID, Lists.class).list();
 	}
 
 	@Override
 	public boolean updateLike(int userID, int movieID) {
-		sessFact.getCurrentSession().createQuery("update Lists set movieLike = true where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		sessFact.getCurrentSession().createQuery("update Lists set movieLike = true where user = " + userID + "and movieID = " + movieID).executeUpdate();
 		return true;
 	}
 
 	
 	@Override
 	public boolean updateWatchList(int userID, int movieID) {
-		sessFact.getCurrentSession().createQuery("update Lists set movieWatchList = true where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		sessFact.getCurrentSession().createQuery("update Lists set movieWatchList = true where user = " + userID + "and movieID = " + movieID).executeUpdate();
 		return true;
 	}
 
 	@Override
 	public boolean updateRemoveLike(int userID, int movieID) {
-		sessFact.getCurrentSession().createQuery("update Lists set movieLike = false where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		sessFact.getCurrentSession().createQuery("update Lists set movieLike = false where user = " + userID + "and movieID = " + movieID).executeUpdate();
 		return true;
 	}
 
 	@Override
 	public boolean updateRemoveWatchList(int userID, int movieID) {
-		sessFact.getCurrentSession().createQuery("update Lists set movieWatchList = false where userID = " + userID + "and movieID = " + movieID).executeUpdate();
+		sessFact.getCurrentSession().createQuery("update Lists set movieWatchList = false where user = " + userID + "and movieID = " + movieID).executeUpdate();
 		return true;
 	}
 
