@@ -71,26 +71,26 @@ public class ListsController {
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/like")
-	public void insertLike(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
-		this.listsService.insertLike(userID, movieID);
+	public void insertLike(HttpServletRequest req, @RequestParam("movieID") int movieID ) {
+		this.listsService.insertLike(Integer.parseInt(req.getSession(false).getAttribute("userID").toString()), movieID);
 	}
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/removelike")
-	public void removeLike(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
-		this.listsService.removeLike(userID, movieID);
+	public void removeLike(HttpServletRequest req, @RequestParam("movieID") int movieID ) {
+		this.listsService.removeLike(Integer.parseInt(req.getSession(false).getAttribute("userID").toString()), movieID);
 	}
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/watch")
-	public void insertWatch(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
-		this.listsService.insertWatchList(userID, movieID);
+	public void insertWatch(HttpServletRequest req, @RequestParam("movieID") int movieID ) {
+		this.listsService.insertWatchList(Integer.parseInt(req.getSession(false).getAttribute("userID").toString()), movieID);
 	}
 	
 	@ResponseStatus(value = HttpStatus.OK)
 	@PostMapping(value = "/removewatch")
-	public void removeWatch(HttpServletRequest req, @RequestParam("userID") int userID, @RequestParam("movieID") int movieID ) {
-		this.listsService.removeWatchList(userID, movieID);
+	public void removeWatch(HttpServletRequest req, @RequestParam("movieID") int movieID ) {
+		this.listsService.removeWatchList(Integer.parseInt(req.getSession(false).getAttribute("userID").toString()), movieID);
 	}
 	
 }

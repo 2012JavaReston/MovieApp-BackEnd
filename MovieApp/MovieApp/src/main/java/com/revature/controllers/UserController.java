@@ -36,7 +36,7 @@ public class UserController {
 		if(user != null) {	//	a user exists for this username
 			if(user.getId() != 0) {	//has an ID, is signed in
 				HttpSession session = req.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("userID", user.getId());
 			}
 		}
 		return user;
