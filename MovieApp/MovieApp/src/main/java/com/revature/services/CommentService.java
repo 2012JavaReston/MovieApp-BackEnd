@@ -20,6 +20,9 @@ public class CommentService {
 		List<Comment> fetched;
 		try {
 			fetched = this.commentRepo.getCommentByUserId(userID);
+			for(Comment c: fetched) {
+				c.getUser().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}
@@ -30,6 +33,9 @@ public class CommentService {
 		List<Comment> fetched;
 		try {
 			fetched = this.commentRepo.getCommentByMovieId(movieID);
+			for(Comment c: fetched) {
+				c.getUser().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}

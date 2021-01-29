@@ -8,6 +8,7 @@ import org.hibernate.internal.build.AllowPrintStacktrace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.models.Comment;
 import com.revature.models.Lists;
 import com.revature.repositories.ListsRepo;
 import com.revature.repositories.UserRepo;
@@ -25,6 +26,9 @@ public class ListsService {
 		List<Lists> fetched;
 		try {
 			fetched = this.listsRepo.getListsByUserId(userID);
+			for(Lists l: fetched) {
+				l.getUserID().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}
@@ -35,6 +39,9 @@ public class ListsService {
 		List<Lists> fetched;
 		try {
 			fetched = this.listsRepo.getListsByMovieId(movieID);
+			for(Lists l: fetched) {
+				l.getUserID().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}
@@ -51,6 +58,9 @@ public class ListsService {
 		List<Lists> fetched;
 		try {
 			fetched = this.listsRepo.getLikedByUserId(userID);
+			for(Lists l: fetched) {
+				l.getUserID().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}
@@ -61,6 +71,9 @@ public class ListsService {
 		List<Lists> fetched;
 		try {
 			fetched = this.listsRepo.getWatchListByUserId(userID);
+			for(Lists l: fetched) {
+				l.getUserID().setPassword(null);
+			}
 		} catch(NoResultException e) {
 			fetched = null;
 		}
