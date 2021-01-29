@@ -4,17 +4,22 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import org.hibernate.internal.build.AllowPrintStacktrace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.Lists;
 import com.revature.repositories.ListsRepo;
+import com.revature.repositories.UserRepo;
 
 @Service("ListService")
 public class ListsService {
 	
 	@Autowired
 	private ListsRepo listsRepo;
+	
+	@Autowired
+	private UserRepo userRepo;
 	
 	public List<Lists> getListsByUserID(int userID) {
 		List<Lists> fetched;
@@ -63,12 +68,14 @@ public class ListsService {
 	}
 	
 	public boolean insertLike(int userID, int movieID) {
-		boolean result;
-		if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
-			Lists list = new Lists(0, movieID, true, false, userID);
-			result = listsRepo.insertList(list);
-		}else {
-			result = listsRepo.updateLike(userID, movieID);
+		boolean result = false;
+		if(userRepo.getUserById(userID) != null) {
+			if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
+				Lists list = new Lists(0, movieID, true, false, userRepo.getUserById(userID));
+				result = listsRepo.insertList(list);
+			}else {
+				result = listsRepo.updateLike(userID, movieID);
+			}
 		}
 		return result;
 	}
@@ -80,12 +87,14 @@ public class ListsService {
 	}
 	
 	public boolean insertWatchList(int userID, int movieID) {
-		boolean result;
-		if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
-			Lists list = new Lists(0, movieID, false, true, userID);
-			result = listsRepo.insertList(list);
-		}else {
-			result = listsRepo.updateWatchList(userID, movieID);
+		boolean result = false;
+		if(userRepo.getUserById(userID) != null) {
+			if(listsRepo.getListByUserAndMovie(userID, movieID).isEmpty()) {
+				Lists list = new Lists(0, movieID, false, true, userRepo.getUserById(userID));
+				result = listsRepo.insertList(list);
+			}else {
+				result = listsRepo.updateWatchList(userID, movieID);
+			}
 		}
 		return result;
 	}

@@ -42,15 +42,21 @@ public class CommentService {
 		return result;
 	}
 
-	public boolean updateComment(int id, String comment) {
-		boolean result;
-		result = commentRepo.updateComment(id, comment);
+	public boolean updateComment(int id, String comment, int userID) {
+		boolean result = false;
+		Comment update = commentRepo.getCommentById(id);
+		if(update != null && update.getUser().getId() == userID) {
+			result = commentRepo.updateComment(id, comment);
+		}
 		return result;
 	}
 
-	public boolean deleteComment(int id) {
-		boolean result;
-		result = commentRepo.deleteComment(id);
+	public boolean deleteComment(int id, int userID) {
+		boolean result = false;
+		Comment update = commentRepo.getCommentById(id);
+		if(update != null && update.getUser().getId() == userID) {
+			result = commentRepo.deleteComment(id);
+		}
 		return result;
 	}
 

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lists_table")
+@Table(name = "lists_table_2")
 public class Lists {
 	
 	@Id
@@ -29,24 +29,21 @@ public class Lists {
 	@Column(name = "movie_watch_list")
 	private boolean movieWatchList;
 	
-	@Column(name = "user_id")
-	private int userID;
-	
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_foreign_key")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	public Lists() {
 		super();
 	}
 
-	public Lists(int listId, int movieID, boolean movieLike, boolean movieWatchList, int userID) {
+	public Lists(int listId, int movieID, boolean movieLike, boolean movieWatchList, User user) {
 		super();
 		this.listID = listId;
 		this.movieID = movieID;
 		this.movieLike = movieLike;
 		this.movieWatchList = movieWatchList;
-		this.userID = userID;
+		this.user = user;
 	}
 
 	public int getListId() {
@@ -81,18 +78,18 @@ public class Lists {
 		this.movieWatchList = movieWatchList;
 	}
 
-	public int getUserID() {
-		return userID;
+	public User getUserID() {
+		return user;
 	}
 
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserID(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public String toString() {
 		return "Lists [listId=" + listID + ", movieID=" + movieID + ", movieLike=" + movieLike
-				+ ", movieWatchList=" + movieWatchList + ", userID=" + userID + "]";
+				+ ", movieWatchList=" + movieWatchList + ", user=" + user + "]";
 	}
 	
 }

@@ -19,6 +19,7 @@ public interface CommentRepo {
 	
 	//Read
 	public List<Comment> getCommentByMovieId(int movieId);
+	public Comment getCommentById(int id);
 
 	//Update
 	boolean updateComment(int id, String comment);

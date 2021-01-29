@@ -17,6 +17,7 @@ public interface UserRepo {
 	
 	//Read 
 	public User getUserByUsername(String username);
+	public User getUserById(int id);
 	
 	//Update
 	boolean updateUser(User user);

@@ -22,7 +22,10 @@ import com.revature.services.UserService;
 
 @Controller
 @RequestMapping(value = "/user")
-@CrossOrigin(origins = "*", allowCredentials = "true")
+
+@CrossOrigin(origins = "http://cinematch.s3-website-us-east-1.amazonaws.com", allowCredentials = "true")
+//@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true") //dev
+
 public class UserController {
 	
 	@Autowired
@@ -35,6 +38,7 @@ public class UserController {
 		if(user != null) {	//	a user exists for this username
 			if(user.getId() != 0) {	//has an ID, is signed in
 				HttpSession session = req.getSession();
+				session.setAttribute("userID", user.getId());
 			}
 		}
 		return user;
