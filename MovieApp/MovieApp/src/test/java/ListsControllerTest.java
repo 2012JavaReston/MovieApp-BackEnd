@@ -69,21 +69,21 @@ public class ListsControllerTest {
 			.andReturn();
 	}
 	
-	@Test
-	public void testInsert() throws Exception{
-		Lists list = new Lists(0,1,false,false,1);
-		
-		 ObjectMapper obj = new ObjectMapper();
-		 obj.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-		 ObjectWriter ow = obj.writer().withDefaultPrettyPrinter();
-		 String requestJson = ow.writeValueAsString(list);
-		 
-		when(listsService.insertList(list)).thenReturn(true);
-		
-		mockMvc.perform(post("/lists/insert",list).contentType(MediaType.APPLICATION_JSON).content(requestJson))	
-		//	.andDo(print())
-			.andExpect(status().isCreated()).andReturn();
-	}
+//	@Test
+//	public void testInsert() throws Exception{
+//		Lists list = new Lists(0,1,false,false,1);
+//		
+//		 ObjectMapper obj = new ObjectMapper();
+//		 obj.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+//		 ObjectWriter ow = obj.writer().withDefaultPrettyPrinter();
+//		 String requestJson = ow.writeValueAsString(list);
+//		 
+//		when(listsService.insertList(list)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/lists/insert",list).contentType(MediaType.APPLICATION_JSON).content(requestJson))	
+//		//	.andDo(print())
+//			.andExpect(status().isCreated()).andReturn();
+//	}
 	
 	@Test
 	public void testLikedByUserID() throws Exception{
