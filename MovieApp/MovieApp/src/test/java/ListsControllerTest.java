@@ -113,58 +113,58 @@ public class ListsControllerTest {
 			.andReturn();
 	}
 	
-	@Test
-	public void testInsertLike() throws Exception{
-		lists.add(new Lists());
-		lists.add(new Lists());
-		
-		when(listsService.insertLike(userID,movieID)).thenReturn(true);
-		
-		mockMvc.perform(post("/lists/like?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk())
-			.andReturn();
-	}
+//	@Test
+//	public void testInsertLike() throws Exception{
+//		lists.add(new Lists());
+//		lists.add(new Lists());
+//		
+//		when(listsService.insertLike(userID,movieID)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/lists/like?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk())
+//			.andReturn();
+//	}
 	
-	@Test
-	public void testInsertWatch() throws Exception{
-		lists.add(new Lists());
-		lists.add(new Lists());
-		
-		when(listsService.insertWatchList(userID,movieID)).thenReturn(true);
-		
-		mockMvc.perform(post("/lists/watch?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk())
-			.andReturn();
-	}
+//	@Test
+//	public void testInsertWatch() throws Exception{
+//		lists.add(new Lists());
+//		lists.add(new Lists());
+//		
+//		when(listsService.insertWatchList(userID,movieID)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/lists/watch?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk())
+//			.andReturn();
+//	}
 	
-	@Test
-	public void testRemoveLike() throws Exception{
-		lists.add(new Lists());
-		lists.add(new Lists());
-		
-		when(listsService.removeLike(userID,movieID)).thenReturn(true);
-		
-		mockMvc.perform(post("/lists/removelike?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk())
-			.andReturn();
-	}
+//	@Test
+//	public void testRemoveLike() throws Exception{
+//		lists.add(new Lists());
+//		lists.add(new Lists());
+//		
+//		when(listsService.removeLike(userID,movieID)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/lists/removelike?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk())
+//			.andReturn();
+//	}
 	
-	@Test
-	public void testRemoveWatch() throws Exception{
-		lists.add(new Lists());
-		lists.add(new Lists());
-		
-		when(listsService.removeWatchList(userID,movieID)).thenReturn(true);
-		
-		mockMvc.perform(post("/lists/removewatch?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
-			.andDo(print())
-			.andExpect(status().isOk())
-			.andReturn();
-	}
-	
+//	@Test
+//	public void testRemoveWatch() throws Exception{
+//		lists.add(new Lists());
+//		lists.add(new Lists());
+//		
+//		when(listsService.removeWatchList(userID,movieID)).thenReturn(true);
+//		
+//		mockMvc.perform(post("/lists/removewatch?userID={userID}&movieID={movieID}", userID, movieID).contentType("application/json"))
+//			.andDo(print())
+//			.andExpect(status().isOk())
+//			.andReturn();
+//	}
+//	
 	
 	
 	
