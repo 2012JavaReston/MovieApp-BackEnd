@@ -1,3 +1,4 @@
+package com.revature.controllertest;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -56,7 +57,6 @@ public class MovieControllerTest {
 		when(movieService.insertMovie(movie)).thenReturn(true);
 		
 		mockMvc.perform(post("/movie/insert",movie).contentType(MediaType.APPLICATION_JSON).content(requestJson))	
-		//	.andDo(print())
 			.andExpect(status().isCreated()).andReturn();
 	}
 	
